@@ -1,8 +1,25 @@
 ﻿namespace ane_blaga_lab7;
 
+using ane_blaga_lab7.Data;
+using System;
+using System.IO;
 public partial class App : Application
 {
-	public App()
+    static ShoppingListDatabase database;
+    public static ShoppingListDatabase Database
+    {
+        get
+        {
+            if (database == null)
+            {
+                database = new
+               ShoppingListDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
+               LocalApplicationData), "ShoppingList.db3"));
+            }
+            return database;
+        }
+    }
+    public App()
 	{
 		InitializeComponent();
 
